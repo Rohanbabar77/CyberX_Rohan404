@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard - CyberX Rohan</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body class="admin-body">
+
+  <header class="hacker-header">
+    <h1 class="glitch-text" data-text="CyberX Admin Panel">CyberX Admin Panel</h1>
+    <p class="tagline">📊 Monitoring Dashboard | Admin Access 🔐</p>
+  </header>
+
+  <main class="hacker-section">
+    <section>
+      <h2 class="section-title">📈 Website Statistics</h2>
+      <p><strong>Total Visits:</strong> <span id="totalVisits">0</span></p>
+      <p><strong>Unique Visits Today:</strong> <span id="uniqueVisitsToday">0</span></p>
+      <p><strong>Messages Received:</strong> <span id="messagesReceived">0</span></p>
+      <p><strong>Active Sessions:</strong> <span id="activeSessions">1</span></p>
+    </section>
+
+    <section>
+      <h2 class="section-title">🗺️ Recent Visitor Locations</h2>
+      <div id="recentLocationsList" class="scroll-box"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">📬 Contact Messages</h2>
+      <div id="contactMessagesList" class="scroll-box"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title">🚫 Ban IP (Simulation)</h2>
+      <input type="text" id="banIpInput" placeholder="Enter IP to Ban">
+      <button id="banIpButton" class="neon-button">Ban IP</button>
+    </section>
+  </main>
+
+  <footer class="hacker-footer">
+    <p>© 2025 CyberX Rohan Admin Dashboard 👾</p>
+  </footer>
+
+  <script src="admin-dashboard.js"></script>
+</body>
+        </html>
