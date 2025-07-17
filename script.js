@@ -236,3 +236,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     logPageVisit();
 });
+const music = document.getElementById('backgroundMusic');
+if (music) {
+  music.volume = 1.0; // Full volume 🎚️
+  music.play().catch(() => {
+    // Autoplay block ho to first click pe play ho 🎧
+    document.addEventListener('click', () => music.play(), { once: true });
+  });
+    }
