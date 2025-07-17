@@ -1,0 +1,44 @@
+/* Custom CSS Variables for Themes */
+:root {
+    /* Dark Theme Colors */
+    --background-color-dark: #000;
+    --text-color-dark: #e0e0e0;
+    --primary-neon-dark: #00ff00; /* Neon Green */
+    --secondary-neon-dark: #ff69b4; /* Hot Pink */
+    --tertiary-neon-dark: #ffff00; /* Bright Yellow */
+    --border-color-dark: #333;
+    --section-bg-dark: #1a1a1a;
+    --link-color-dark: #66ccff; /* Light Blue */
+    --button-bg-dark: #333;
+    --button-border-dark: #555;
+    --button-hover-bg-dark: #555;
+    --button-hover-border-dark: #777;
+
+    /* Light Theme Colors (adjust as needed) */
+    --background-color-light: #f0f0f0;
+    --text-color-light: #333;
+    --primary-neon-light: #00aaff; /* Blue */
+    --secondary-neon-light: #ff6600; /* Orange */
+    --tertiary-neon-light: #ff00ff; /* Magenta */
+    --border-color-light: #ccc;
+    --section-bg-light: #fff;
+    --link-color-light: #007bff;
+    --button-bg-light: #eee;
+    --button-border-light: #ddd;
+    --button-hover-bg-light: #ccc;
+    --button-hover-border-light: #bbb;
+}
+
+/* Base Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Space Mono', monospace, sans-serif;
+    background-color: var(--background-color-dark);
+    color: var(--text-color-dark);
+    text-align: center;
+    overflow-x: hidden;
+    transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+/* ... (Remaining CSS omitted for brevity; full content included in original message) ... */
