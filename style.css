@@ -1,0 +1,11 @@
+* { margin:0; padding:0; box-sizing:border-box; font-family: 'Courier New', monospace; color:#00ff00; }
+body { background:black; overflow-x:hidden; }
+canvas#matrix { position:fixed; top:0; left:0; z-index:0; }
+header, section, footer { position:relative; z-index:1; padding:20px; }
+header { text-align:center; }
+nav a { margin:0 10px; color:#0f0; text-decoration:none; }
+nav a:hover { color:#fff; }
+section { margin:40px 10px; }
+footer { text-align:center; padding:10px; font-size:0.9em; }
+a { color:#0f0; text-decoration:none; }
+a:hover { text-decoration:underline; }
