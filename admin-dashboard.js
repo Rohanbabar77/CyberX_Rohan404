@@ -1,1 +1,0 @@
-// JS for fetching & displaying intruder data
