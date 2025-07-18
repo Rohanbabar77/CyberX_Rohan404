@@ -26,7 +26,7 @@ type();
 
 window.addEventListener('load', () => {
     const audio = document.getElementById('bgMusic');
-    audio.volume = 0.2;
+    audio.volume = 100;
     audio.play().catch(e => console.log("Autoplay failed: ", e));
 });
 
