@@ -1,1 +1,0 @@
-// JS for captcha, permissions, and intruder trap
