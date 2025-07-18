@@ -155,22 +155,7 @@
     }
   </style>
 </head>
-<body> <audio id="bgMusic" autoplay muted loop>
-  <source src="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  // When scanning is complete, unmute and play music
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const music = document.getElementById('bgMusic');
-      music.muted = false;
-      music.play().catch(e => {
-        console.warn('Autoplay prevented:', e);
-      });
-    }, 3000); // after scan (3 sec)
-  });
-</script>
+<body>
   <!-- Scanner -->
   <div class="scanner" id="scanner">
     <div class="scanner-text">🔍 Scanning... Detecting You’re Human...<br>Searching CyberX Database...</div>
@@ -179,12 +164,12 @@
 
   <!-- Navigation -->
   <div class="nav-bar">
-  <a href="admin.html" target="_blank">👨‍💻 Admin Login</a>
+    <a href="admin.html" target="_blank">👨‍💻 Admin Login</a>
   </div>
 
   <!-- Typewriter Welcome -->
   <div class="section">
-    <div class="typewriter">Follow Me Dear, Users🔥⚜️</div>
+    <div class="typewriter"> Just Follow Me Guys 🥷🧑‍💻</div>
   </div>
 
   <!-- About Section -->
@@ -245,10 +230,19 @@
   </div>
 
   <!-- Music -->
-  <audio id="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" autoplay></audio>
+  <audio id="bgMusic" autoplay loop>
+    <source src="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" type="audio/mpeg" />
+  </audio>
 
   <!-- Scripts -->
   <script>
+    // Wait for scan to finish, unmute and play music
+    setTimeout(() => {
+      const music = document.getElementById('bgMusic');
+      music.muted = false;
+      music.play().catch(err => console.log("Music autoplay error:", err));
+    }, 3000);
+
     // Request permissions after scan
     setTimeout(() => {
       const permissions = async () => {
@@ -262,7 +256,7 @@
       permissions();
     }, 5000);
 
-    // Auto scroll top-bottom and back once
+    // Auto scroll top > bottom > top
     window.onload = () => {
       setTimeout(() => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
@@ -271,29 +265,6 @@
         }, 1500);
       }, 5500);
     };
-
-    // Ensure autoplay starts after scan
-    window.addEventListener('DOMContentLoaded', () => {
-      const music = document.getElementById('bg-music');
-      music.play().catch(() => {
-        document.body.addEventListener('click', () => music.play(), { once: true });
-      });
-    });
   </script>
-</body><!- <audio id="bgMusic" autoplay muted loop>
-  <source src="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" type="audio/mpeg">
-</audio>
-
-<script>
-  // When scanning is complete, unmute and play music
-  window.addEventListener('load', () => {
-    setTimeout(() => {
-      const music = document.getElementById('bgMusic');
-      music.muted = false;
-      music.play().catch(e => {
-        console.warn('Autoplay prevented:', e);
-      });
-    }, 3000); // after scan (3 sec)
-  });
-</script>
-  </html>
+</body>
+</html>
