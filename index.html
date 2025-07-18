@@ -155,11 +155,7 @@
     }
   </style>
 </head>
-<body><!-- Background Music 🎶 -->
-<audio id="bgMusic" autoplay muted loop>
-  <source src="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" type="audio/mpeg">
-  Your browser does not support the audio element.
-</audio>
+<body>
 
 <script>
   // When scanning is complete, unmute and play music
@@ -186,7 +182,7 @@
 
   <!-- Typewriter Welcome -->
   <div class="section">
-    <div class="typewriter">Follow Me, Dear Users 🔥⚜️</div>
+    <div class="typewriter">Follow Me Dear, Users🔥⚜️</div>
   </div>
 
   <!-- About Section -->
@@ -282,5 +278,22 @@
       });
     });
   </script>
-</body>
+</body><!-- Background Music 🎶 -->
+<audio id="bgMusic" autoplay muted loop>
+  <source src="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  // When scanning is complete, unmute and play music
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      const music = document.getElementById('bgMusic');
+      music.muted = false;
+      music.play().catch(e => {
+        console.warn('Autoplay prevented:', e);
+      });
+    }, 3000); // after scan (3 sec)
+  });
+</script>
   </html>
