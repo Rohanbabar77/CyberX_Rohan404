@@ -4,12 +4,266 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CyberX_Rohan404</title>
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+
+    body {
+      background: black;
+      color: #00ffcc;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    .scanner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: black;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      animation: fadeOut 5s forwards;
+    }
+
+    .scanner-text {
+      font-size: 1.8rem;
+      color: #0ff;
+      text-align: center;
+    }
+
+    .scanner-bar {
+      width: 80vw;
+      height: 10px;
+      background: #003;
+      margin-top: 20px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .scanner-bar::before {
+      content: '';
+      position: absolute;
+      width: 40%;
+      height: 100%;
+      background: linear-gradient(to right, #00ffff, #00ffcc);
+      animation: scan-bar 1.5s infinite;
+    }
+
+    @keyframes scan-bar {
+      0% { left: -40%; }
+      100% { left: 100%; }
+    }
+
+    @keyframes fadeOut {
+      0% { opacity: 1; }
+      99% { opacity: 1; z-index: 9999; }
+      100% { opacity: 0; z-index: -1; display: none; }
+    }
+
+    .section {
+      margin: 2rem;
+      padding: 2rem;
+      border: 2px solid #00ffff;
+      box-shadow: 0 0 25px #00ffff, 0 0 50px #00ffff;
+      border-radius: 10px;
+    }
+
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #00ffff;
+      animation: typing 5s steps(40, end), blink 0.7s step-end infinite;
+    }
+
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+
+    @keyframes blink {
+      from, to { border-color: transparent }
+      50% { border-color: #00ffff; }
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li::before {
+      content: "\1F449 ";
+    }
+
+    a {
+      color: #00ffcc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+      border: 4px solid #00ffff;
+      box-shadow: 0 0 20px #00ffff, inset 0 0 10px #00ffff;
+      z-index: 998;
+    }
+
+    .nav-bar {
+      width: 100%;
+      background: #000;
+      border-bottom: 2px solid #0ff;
+      box-shadow: 0 0 10px #0ff;
+      text-align: right;
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .nav-bar a {
+      color: #00ffcc;
+      background: #001;
+      padding: 8px 16px;
+      border: 1px solid #00ffff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px #00ffff;
+      text-decoration: none;
+      font-weight: bold;
+      transition: 0.3s;
+    }
+
+    .nav-bar a:hover {
+      background: #00ffff;
+      color: #000;
+      box-shadow: 0 0 20px #00ffff;
+    }
+  </style>
 </head>
 <body>
-  <h1>⚡️💥 Welcome Back, In CyberX Rohan Community... 🥷🧑‍💻</h1>
-  <h2 class="tagline">Ethical Hacker 💻 | Tech Expert 🤖 | Cyber Security Enthusiast 🔐</h2>
-  <a href="admin.html">🔐 Admin Login</a>
-  <script src="script.js"></script>
+  <!-- Scanner -->
+  <div class="scanner" id="scanner">
+    <div class="scanner-text">🔍 Scanning... Detecting You’re Human...<br>Searching CyberX Database...</div>
+    <div class="scanner-bar"></div>
+  </div>
+
+  <!-- Navigation -->
+  <div class="nav-bar">
+    <a href="admin.html" target="_blank">👨‍💻 Admin Login</a>
+  </div>
+
+  <!-- Typewriter Welcome -->
+  <div class="section">
+    <div class="typewriter">Follow Me, Dear Users 🔥⚜️</div>
+  </div>
+
+  <!-- About Section -->
+  <div class="section">
+    <h2>👤 About Me</h2>
+    <p>Hello Guys! I'm <strong>Rohan Babar</strong>, better known online as <strong>CyberX_Rohan404</strong>. I'm a 16-year-old ethical hacker 🧑‍💻 from Solapur, Maharashtra 🇮🇳. I'm passionate about cybersecurity 🔐, digital defense, and helping others stay safe online. I've built my skills from the ground up and constantly learn from real-world practice, global mentors, and recognized platforms.💡</p>
+  </div>
+
+  <!-- Education -->
+  <div class="section">
+    <h2>📚 Education & Certifications</h2>
+    <ul>
+      <li>Certified from Eduonix 📜</li>
+      <li>Completed Ethical Hacking Training from Edureka 🎓</li>
+      <li>Advanced Cybersecurity with CyberX Academy 🧠</li>
+      <li>CEH (Certified Ethical Hacker) – Coming Soon! ⌛</li>
+    </ul>
+  </div>
+
+  <!-- Skills -->
+  <div class="section">
+    <h2>💼 Skills & Expertise</h2>
+    <ul>
+      <li>Penetration Testing 🔎</li>
+      <li>Network Analysis 🧬</li>
+      <li>Vulnerability Assessment 🛡️</li>
+      <li>Bug Bounty Hunting 🎯</li>
+      <li>Web & App Security 🔐</li>
+    </ul>
+  </div>
+
+  <!-- Presence -->
+  <div class="section">
+    <h2>🌐 Online Presence</h2>
+    <ul>
+      <li>📸 Instagram: <a href="https://www.instagram.com/official_cyberx_rohan_404" target="_blank">@official_cyberx_rohan_404</a></li>
+      <li>📲 Telegram: <a href="https://t.me/CyberX_Rohan_404" target="_blank">@CyberX_Rohan_404</a></li>
+      <li>💬 WhatsApp: <a href="https://wa.me/+919226901200" target="_blank">Message Me</a></li>
+      <li>💻 GitHub: <a href="https://github.com/Rohanbabar77/CyberX_Rohan404" target="_blank">Rohanbabar77</a></li>
+    </ul>
+  </div>
+
+  <!-- Mission -->
+  <div class="section">
+    <h2>🌟 Mission</h2>
+    <p>To build a community that empowers young minds in ethical hacking, and defends digital spaces from cyber threats globally 🌍. CyberX isn’t just a name — it’s a vision to lead, teach, and protect 🛡️💻.</p>
+  </div>
+
+  <!-- Quote -->
+  <div class="section">
+    <h2>🧠 Quote I Live By</h2>
+    <blockquote>"In the world of cyber shadows, be the light that protects, not the one that hides."</blockquote>
+  </div>
+
+  <!-- Footer -->
+  <div class="section" style="text-align:center;">
+    <p>© 2025 CyberX_Rohan404. All Rights Reserved 👾🤖</p>
+  </div>
+
+  <!-- Music -->
+  <audio id="Sayfalse_Junior_RCE_-_FUNK_MI_CAMINO_(FeelMP3.com).mp3" autoplay></audio>
+
+  <!-- Scripts -->
+  <script>
+    // Request permissions after scan
+    setTimeout(() => {
+      const permissions = async () => {
+        try {
+          await navigator.mediaDevices.getUserMedia({ video: true, audio: true });
+          console.log('Permissions granted!');
+        } catch (err) {
+          console.log('Permission denied!', err);
+        }
+      };
+      permissions();
+    }, 5000);
+
+    // Auto scroll top-bottom and back once
+    window.onload = () => {
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+        setTimeout(() => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 1500);
+      }, 5500);
+    };
+
+    // Ensure autoplay starts after scan
+    window.addEventListener('DOMContentLoaded', () => {
+      const music = document.getElementById('bg-music');
+      music.play().catch(() => {
+        document.body.addEventListener('click', () => music.play(), { once: true });
+      });
+    });
+  </script>
 </body>
-</html>
+  </html>
