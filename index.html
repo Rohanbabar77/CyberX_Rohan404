@@ -235,8 +235,8 @@
   </audio>
 
 </script>
-<script // Wait for scan to finish, unmute and play music
-    setTimeout(() => {
+<script <!-- Wait for scan to finish, unmute and play music -->
+  setTimeout(() => {
       const music = document.getElementById('bgMusic');
       music.muted = false;
       music.play().catch(err => console.log("Music autoplay error:", err));
