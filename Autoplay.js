@@ -1,19 +1,27 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const audio = new Audio("audio/Funkmicamino.mp3"); // 📁 Your music path here
-    audio.loop = true; // 🔁 Music will keep playing
-    audio.volume = 1.0; // 🔊 Full volume
+    const audio = new Audio("audio/Funkmicamino.mp3"); // 🎶 Your music path
+    audio.loop = true;
+    audio.volume = 1.0;
 
-    // Try to play after small delay to avoid browser block
-    setTimeout(() => {
+    // 🎯 Fake user interaction hack
+    const fakeBtn = document.getElementById("invisiblePlayBtn");
+
+    const triggerAudio = () => {
         const playPromise = audio.play();
         if (playPromise !== undefined) {
             playPromise
                 .then(() => {
-                    console.log("🎵 Music started automatically!");
+                    console.log("🎵 Auto music started with fake click");
                 })
                 .catch((error) => {
-                    console.warn("🚫 Autoplay blocked by browser:", error);
+                    console.warn("⚠️ Autoplay blocked:", error);
                 });
         }
-    }, 500); // 🕐 Wait 0.5 seconds before autoplay
+    };
+
+    // 🧠 Wait and trigger fake click
+    setTimeout(() => {
+        fakeBtn.click(); // 👆 Fake click
+        triggerAudio();  // 🎧 Play after click
+    }, 1000); // 1 second delay
 });
