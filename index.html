@@ -243,8 +243,8 @@
       music.play().catch(err => console.log("Music autoplay error:", err));
     }, 3000);
     <!-- Request Permissions for Notification & Location -->
-<script>
-  // Ask for browser notification permission
+      <script>
+        // Ask for browser notification permission
   setTimeout(() => {
     if ("Notification" in window) {
       Notification.requestPermission().then((permission) => {
@@ -272,8 +272,7 @@
       );
     }
   }, 5000);
-</script>
-     // Auto scroll top > bottom > top
+<script // Auto scroll top > bottom > top
     window.onload = () => {
       setTimeout(() => {
         window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
