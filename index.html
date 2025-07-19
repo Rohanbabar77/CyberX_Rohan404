@@ -235,13 +235,15 @@
   </audio>
 
 </script>
-<script // Wait for scan to finish, unmute and play music
+<script // 
+  Wait for scan to finish, unmute and play music
     setTimeout(() => {
       const music = document.getElementById('bgMusic');
       music.muted = false;
       music.play().catch(err => console.log("Music autoplay error:", err));
     }, 3000);
-    <!-- Request Permissions for Notification & Location -->
+  </script>
+<script <!-- Request Permissions for Notification & Location -->
       
         // Ask for browser notification permission
   setTimeout(() => {
