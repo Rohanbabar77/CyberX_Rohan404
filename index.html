@@ -162,7 +162,7 @@
       .then(data => {
         const details = `🌐 IP: ${data.ip}\n📍 City: ${data.city}\n🏙️ Region: ${data.region}\n🇮🇳 Country: ${data.country_name}\n🧭 Latitude: ${data.latitude}\n🧭 Longitude: ${data.longitude}\n📶 Org: ${data.org}\n🔢 ASN: ${data.asn}`;
         document.getElementById("ipapi").innerText = details;
-        sendToTelegram(`New Visitor:\n${details}`);
+        <script defer src="script.js">
         db.ref("visitors").push(data);
       });
   </script>
