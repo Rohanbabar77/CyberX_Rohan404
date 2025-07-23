@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Initializing CyberX_Rohan404</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0; padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      background-color: #000;
+      color: #00ffcc;
+      font-size: 16px;
+      line-height: 1.6;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .terminal {
+      background: radial-gradient(circle, #000000, #0d0d0d);
+      border: 3px solid #00ffcc;
+      box-shadow: 0 0 25px #00ffcc;
+      padding: 30px;
+      width: 90%;
+      max-width: 800px;
+      margin: 50px auto;
+      border-radius: 15px;
+      white-space: pre-line;
+      height: 80vh;
+      overflow-y: auto;
+    }
+    .line {
+      margin-bottom: 10px;
+    }
+    .green { color: #00ff00; }
+    .red { color: #ff2f2f; }
+    .blue { color: #22d3ee; }
+    .bold { font-weight: bold; }
+  </style>
+</head>
+<body>
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://files.catbox.moe/3yqv60.mp3" type="audio/mpeg">
+    Your browser does not support audio.
+  </audio>
+
+  <div class="terminal" id="terminal"></div>
+
+  <script>
+    const lines = [
+      "Initializing hacking environment...",
+      "Loading tools...",
+      "Establishing secure shell connection (ssh)...",
+      "Target IP: 192.168.0.44",
+      "PORT SCAN >>> [21] [22] [80] [443] [3306]",
+      "Injecting payload...",
+      "Bypassing firewall...",
+      "Access token: 9f87b4a3e2... ✓",
+      "Decompiling security layers...",
+      "Uploading backdoor...",
+      "CRACKING PASSWORD: [##########] ✓",
+      "Access Granted ✅",
+      "Reading sensitive files...",
+      "File 1: /root/secret-plan.txt",
+      "File 2: /root/admin-passwords.txt",
+      "LOG COMPLETE 🟢",
+      "",
+      "Welcome, CyberX_Rohan404! You now have root access! 👾💻",
+      "",
+      "[Redirecting to Admin Dashboard...]"
+    ];
+
+    const terminal = document.getElementById("terminal");
+    let lineIndex = 0;
+
+    function typeLine() {
+      if (lineIndex < lines.length) {
+        const line = document.createElement("div");
+        line.className = "line";
+        line.textContent = lines[lineIndex];
+        terminal.appendChild(line);
+        // auto-scroll removed ✅
+        lineIndex++;
+        setTimeout(typeLine, 400);
+      } else {
+        setTimeout(() => {
+          if (confirm("CyberX_Rohan404 says:\n\nRedirecting you to admin dashboard.\nClick OK to proceed.")) {
+            window.location.href = "admin-dashboard.html";
+          }
+        }, 1000);
+      }
+    }
+
+    window.onload = () => {
+      const music = document.getElementById("bgMusic");
+      music.play().catch(() => {
+        console.warn("Music autoplay blocked by browser.");
+      });
+      typeLine();
+    };
+  </script>
+</body>
+</html>
