@@ -1,134 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Admin Login | CyberX_Rohan404</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CyberX_Rohan404 Login</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
   <style>
     * {
       font-family: 'Orbitron', sans-serif;
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      background: #000;
-      color: #00ffcc;
+      background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+      color: #00ffe5;
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
-      margin: 0;
+      overflow: hidden;
     }
 
-    .login-box {<a href="index.html" class="back-btn">⬅️ Back to Homepage</a>
-      background: #010101;
-      padding: 40px;
-      border: 2px solid #00ffff;
-      box-shadow: 0 0 30px #00ffff;
-      border-radius: 10px;
-      width: 320px;
-      text-align: center;
-    }
-
-    h2 {
-      margin-bottom: 30px;
-      color: #0ff;
-    }
-
-    input[type="text"], input[type="password"] {
+    .scan-screen {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border: 1px solid #0ff;
-      background: transparent;
-      color: #00ffcc;
-      outline: none;
-      border-radius: 5px;
+      height: 100%;
+      background: url('https://media.giphy.com/media/xTiTnx37nc3vjsdeLK/giphy.gif') center center no-repeat;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      color: #00ffe5;
+      font-size: 1.5rem;
+      z-index: 2;
     }
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      background: #00ffff;
-      color: #000;
-      font-weight: bold;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 0.3s;
-      box-shadow: 0 0 15px #00ffff;
-    }
-
-    button:hover {
-      background: #000;
-      color: #00ffff;
-      box-shadow: 0 0 20px #00ffff;
-    }
-
-    .popup {
-      margin-top: 15px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-  </style>
-</head><head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Admin Login - CyberX_Rohan404</title>
-
-  <!-- Existing CSS links -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- ✅ Back to Home Button Styling -->
-  <style>
-    .back-btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 10px 20px;
-      color: #00ffcc;
-      font-family: 'VT323', monospace;
-      background-color: rgba(0, 0, 0, 0.6);
-      border: 2px solid #00ffcc;
+    .login-container {
+      display: none;
+      flex-direction: column;
+      padding: 2rem;
+      border: 2px solid #00ffe5;
       border-radius: 10px;
-      text-decoration: none;
-      font-size: 20px;
-      box-shadow: 0 0 15px #00ffcc, 0 0 30px #00ffcc;
-      transition: all 0.3s ease-in-out;
+      background-color: #000000cc;
+      box-shadow: 0 0 15px #00ffe5;
+      z-index: 1;
     }
-    .back-btn:hover {
-      background-color: #00ffcc;
-      color: black;
-      box-shadow: 0 0 30px #00ffcc, 0 0 60px #00ffcc;
+
+    .login-container input {
+      padding: 0.8rem;
+      margin: 1rem 0;
+      border: none;
+      outline: none;
+      background: #111;
+      color: #00ffe5;
+      border-bottom: 2px solid #00ffe5;
+    }
+
+    .login-container button {
+      padding: 0.8rem;
+      background-color: #00ffe5;
+      color: #000;
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .login-container button:hover {
+      background-color: #00cccc;
+    }
+
+    #enterButton {
+      margin-top: 2rem;
+      padding: 1rem 2rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      background: transparent;
+      border: 2px solid #00ffe5;
+      color: #00ffe5;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0% {opacity: 1;}
+      50% {opacity: 0.2;}
+      100% {opacity: 1;}
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      .login-container {
+        width: 100%;
+      }
     }
   </style>
 </head>
+
 <body>
-  <div class="login-box">
-    <h2>🔐 Admin Panel Login</h2>
-    <input type="text" id="username" placeholder="Enter Username">
-    <input type="password" id="password" placeholder="Enter Password">
-    <button onclick="checkLogin()">Login</button>
-    <div class="popup" id="popup"></div>
+  <div class="scan-screen" id="scanScreen">
+    <div>⚡️ System Scanning for Intrusion... 🧑‍💻</div>
+    <button id="enterButton">🎯 Tap to Enter CyberX_Rohan404 🔓</button>
   </div>
 
+  <div class="login-container" id="loginContainer">
+    <h2>🔐 Login to CyberX_Rohan404</h2>
+    <input type="text" id="username" placeholder="👤 Username">
+    <input type="password" id="password" placeholder="🔑 Password">
+    <button onclick="login()">Login</button>
+  </div>
+
+  <audio id="scanSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+  <audio id="loginSuccessSound" src="https://actions.google.com/sounds/v1/cartoon/clang_and_wobble.ogg"></audio>
+  <audio id="loginFailSound" src="https://actions.google.com/sounds/v1/alarms/beep_short.ogg"></audio>
+
   <script>
-    function checkLogin() {
-      const user = document.getElementById('username').value.trim();
-      const pass = document.getElementById('password').value.trim();
-      const popup = document.getElementById('popup');
+    const scanScreen = document.getElementById("scanScreen");
+    const loginContainer = document.getElementById("loginContainer");
+    const enterButton = document.getElementById("enterButton");
+    const scanSound = document.getElementById("scanSound");
+    const loginSuccessSound = document.getElementById("loginSuccessSound");
+    const loginFailSound = document.getElementById("loginFailSound");
 
-      if (user === 'HackerX_Rohan404' && pass === 'CyberX_Rohan@8080') {
-        popup.style.color = '#00ff00';
-        popup.innerHTML = '✅ ACCESS GRANTED<br>WELCOME BACK MR. ROHAN...😎🥷';
+    enterButton.addEventListener("click", () => {
+      scanSound.play();
+      enterButton.disabled = true;
+      enterButton.textContent = "🛰️ Scanning... Please Wait...";
 
+      setTimeout(() => {
+        scanScreen.style.display = "none";
+        loginContainer.style.display = "flex";
+      }, 5000);
+    });
+
+    function login() {
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+      if (username === "CyberX_Rohan404" && password === "HackerX_Rohan404") {
+        loginSuccessSound.play();
         setTimeout(() => {
-          window.location.href = 'admin-dashboard.html';
-        }, 2000);
+          if (confirm("🎉 ACCESS GRANTED!\nWelcome, CyberX_Rohan404!\nClick OK to Enter in High Security Scanning System")) {
+            window.location.href = "hacking-simulator.html";
+          }
+        }, 600);
       } else {
-        popup.style.color = 'red';
-        popup.innerHTML = '❌ ACCESS DENIED<br>UNAUTHORIZED ATTEMPT! INTRUDER DETECTED...👾🤖';
-        setTimeout(() => {
-          document.querySelector('.login-box').style.display = 'none';
-        }, 2000);
+        loginFailSound.play();
+        alert("❌ Incorrect credentials. Try again!");
       }
     }
   </script>
