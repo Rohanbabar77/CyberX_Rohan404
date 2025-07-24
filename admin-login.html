@@ -104,14 +104,14 @@
 
 <body>
   <div class="scan-screen" id="scanScreen">
-    <div>⚡️ System Scanning for Intrusion... 🧑‍💻</div>
-    <button id="enterButton">🎯 Tap to Enter CyberX_Rohan404 🔓</button>
+    <div>⚡️ Scanning System For Intrusion... 🧑‍💻</div>
+    <button id="enterButton">🎯 Tap, to Enter in HackerX_Rohan404 Admin Login Page 🔓...</button>
   </div>
 
   <div class="login-container" id="loginContainer">
-    <h2>🔐 Login to CyberX_Rohan404</h2>
-    <input type="text" id="username" placeholder="👤 Username">
-    <input type="password" id="password" placeholder="🔑 Password">
+    <h2>🔐 Login to HackerX_Rohan404</h2>
+    <input type="text" id="username" placeholder="👤 Username 😏">
+    <input type="password" id="password" placeholder="🔑 Password 🤫">
     <button onclick="login()">Login</button>
   </div>
 
@@ -130,7 +130,7 @@
     enterButton.addEventListener("click", () => {
       scanSound.play();
       enterButton.disabled = true;
-      enterButton.textContent = "🛰️ Scanning... Please Wait...";
+      enterButton.textContent = "🛰️ Scanning User & Device 🔍... Please Wait ✋️...";
 
       setTimeout(() => {
         scanScreen.style.display = "none";
@@ -144,13 +144,13 @@
       if (username === "CyberX_Rohan404" && password === "HackerX_Rohan404") {
         loginSuccessSound.play();
         setTimeout(() => {
-          if (confirm("🎉 ACCESS GRANTED!\nWelcome, CyberX_Rohan404!\nClick OK to Enter in High Security Scanning System")) {
+          if (confirm("🎉 ACCESS GRANTED! ✅️\nWelcome, HackerX_Rohan404!\nClick OK to Enter in High Security Scanning System 🔰🛡...")) {
             window.location.href = "hacking-simulator.html";
           }
         }, 600);
       } else {
         loginFailSound.play();
-        alert("❌ Incorrect credentials. Try again!");
+        alert("🚫 WRONG CREDENTIALS 🔐, ❌ SECURITY BREACH ALERT 🛡... SYSTEM OPTIMIZED SUCCESSFULLY 🔰✅️...");
       }
     }
   </script>
